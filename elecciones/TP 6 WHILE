@@ -1,0 +1,33 @@
+  bandera_primer_candidato = 0
+        candidatos = True 
+        votos_emitidos = 0
+        votos_emitidos = int(votos_emitidos)
+        while(candidatos):
+            nombre = prompt("", "nombre...")
+            edad = prompt("", "edad....")
+            edad = int(edad)
+            while(edad < 25):
+                edad = prompt("", "reingrese la edad")
+                edad = int(edad)
+        
+            cantidad_votos = prompt("", "cantidad de votos")
+            cantidad_votos = int(cantidad_votos)
+            while(cantidad_votos < 0):
+                cantidad_votos = prompt("", "re-ingrese cantidad de votos")
+                cantidad_votos = int(cantidad_votos)
+
+            
+        
+            votos_emitidos = votos_emitidos + cantidad_votos
+            
+
+    
+    
+
+            candidatos = prompt("", "desea sumar otro candidato ?")
+            while(candidatos != "s"):
+                candidatos = False
+                break
+    
+        alert("",f"la cantidad de votos emitidos es {votos_emitidos}")
+

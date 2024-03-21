@@ -46,62 +46,43 @@ class App(customtkinter.CTk):
         marca = self.combobox_marca.get()
         cantidad = self.combobox_cantidad.get()
         cantidad = int(cantidad)
-        precio_por_unidad = 800
+        valor_unitario = 800
         descuento = 0
-        descuento_extra = 0
-        sub_total = (precio_por_unidad * cantidad)  
-        
-        
-         
-        
+        descuento_plus = 0
 
-        if cantidad > 5 :
+        if cantidad > 5:
             descuento = 50
-        if cantidad == 5:
-            if marca =="ArgentinaLuz":
+        elif cantidad == 5:
+            if marca == "ArgentinaLuz":
                 descuento = 40
             else:
                 descuento = 30
-        if cantidad == 4:
+        elif cantidad == 4:
             if marca == "ArgentinaLuz" or marca == "FelipeLamparas":
                 descuento = 25
             else:
                 descuento = 20
-        if cantidad == 3:
+        elif cantidad == 3:
             if marca == "ArgentinaLuz":
                 descuento = 15
             elif marca == "FelipeLamparas":
                 descuento = 10
-            else: 
+            else:
                 descuento = 5
 
-        if cantidad < 3:
-            descuento = 0
-
-
-        
-        ahorro = (sub_total * descuento) / 100
+        sub_total = valor_unitario * cantidad
+        ahorro = sub_total * descuento / 100
         total = sub_total - ahorro
 
         if total > 4000:
-            descuento_extra = 5
-
-
-        ahorro_extra = (total * descuento_extra) / 100
-        total_extra = total - descuento_extra
-
+            descuento_plus = 5 
         
+        ahorro_plus = total * descuento_plus / 100
+        total_plus = total - ahorro_plus
 
+                
+        alert("Ticket", f"compró {cantidad} lamparas \n total {sub_total} \n con un descuento del {descuento} % \n es un total de {total} \n descuento plus {descuento_plus} \n total :  {total_plus}  ")
 
-        mensaje =f"compró {cantidad} lamparitas \n gastó {sub_total} \n se le hizo un descuento del {descuento} \n ahorró {ahorro} \n TOTAL {total} \n descuento extra {descuento_extra} \n ahorró {ahorro_extra} \n TOTAL EXTRA {total_extra}"
-        
-        
-        
-         
-
-        alert("",f"{mensaje}")
-
-       
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
